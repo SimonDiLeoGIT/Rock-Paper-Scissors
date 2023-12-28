@@ -11,18 +11,18 @@ function App() {
         <h2 className="text-3xl p-4 mt-12 font-semibold"> Game mode </h2>
         <Router>
           <section className="grid gap-4">
-            <div className="m-auto flex p-0.5 bg-white rounded-md hover:bg-gradient-to-r from-scissors-to via-paper-to to-rock-to ">
+            <div className="m-auto flex rounded-xl bg-opacity-100 hover:bg-gradient-to-r from-scissors-to via-paper-to to-rock-to">
               <Link
                 to="/original-mode"
-                className="text-xl w-40 py-2 bg-radial-gradient-from rounded-md"
+                className="text-lg w-32 font-medium py-2 rounded-xl border-2 hover:border-none hover:bg-gradient-to-t from-radial-gradient-from to-radial-gradient-to hover:m-0.5"
               >
                 Original
               </Link>
             </div>
-            <div className="m-auto flex p-0.5 bg-white rounded-md hover:bg-gradient-to-r from-scissors-to via-paper-to to-rock-to">
+            <div className="m-auto flex rounded-xl bg-opacity-100 hover:bg-gradient-to-r from-scissors-to via-paper-to to-rock-to">
               <Link
                 to="/bonus-mode"
-                className="text-xl w-40 py-2 bg-radial-gradient-from rounded-md"
+                className="text-lg w-32 font-medium py-2 rounded-xl border-2 hover:border-none  hover:bg-gradient-to-t from-radial-gradient-from to-radial-gradient-to hover:m-0.5"
               >
                 Bonus
               </Link>
