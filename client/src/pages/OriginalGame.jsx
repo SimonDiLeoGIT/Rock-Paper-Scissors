@@ -6,13 +6,13 @@ import rules from "./../assets/images/image-rules.svg"
 import { useState } from "react";
 import bgImage from "./../assets/images/bg-triangle.svg"
 import close from "./../assets/images/icon-close.svg"
+import { Button } from "../components/Button"
 
 export const OriginalGame = () => {
 
   let [score, setScore] = useState(0);
   let [viewRules, setRules] = useState(false);
-  let [user, setUser] = useState();
-  let [pc, setPC] = useState();
+  let [picked, setPicked] = useState(-1);
 
   function handleRules() {
     let classes = "absolute bg-white top-0 z-20 w-screen h-screen grid grid-rows-4 place-content-center ";
@@ -21,10 +21,35 @@ export const OriginalGame = () => {
   }
 
   function handleChoice(key) {
-    setPC(Math.random(2));
-    setUser(key);
-    console.log(pc);
-    console.log(user);
+    let user = key;
+
+    let pc = Math.floor(Math.random() * 3)
+
+    let win = false;
+    let empate = false;
+
+    if (user === 0) {
+      pc === 0 && (empate = true);
+      pc === 2 && (win = true);
+    } else if (user === 1) {
+      pc === 1 && (empate = true);
+      pc === 0 && (win = true);
+    } else {
+      pc === 2 && (empate = true);
+      pc === 1 && (win = true);
+    }
+
+    if (!empate) {
+      if (!win) {
+        (score > 0) && setScore(score - 1)
+      } else {
+        setScore(score + 1)
+      }
+    }
+
+    console.log(pc)
+    console.log(user)
+
   }
 
   return (
@@ -40,9 +65,9 @@ export const OriginalGame = () => {
       </section>
       <section className="grid grid-cols-2 z-10 absolute w-screen top-1/3">
         <div className="col-auto w-screen h-full grid place-content-center absolute z-0"> <img className="m-auto w-52" src={bgImage} alt="bg" /> </div>
-        <button onClick={() => handleChoice(0)} className="col-span-1 m-auto z-10 rounded-full p-4 shadow-inner bg-gradient-to-tr from-scissors-from to-scissors-to"><div className="bg-white w-28 h-28 rounded-full grid"><img className="m-auto" alt="scissor" src={scissors_icon} /></div></button>
-        <button onClick={handleChoice} className="col-span-1 m-auto z-10 rounded-full p-4 shadow-inner bg-gradient-to-tr from-paper-from to-paper-to"><div className="bg-white w-28 h-28 rounded-full grid"><img className="m-auto" alt="paper" src={paper_icon} /></div></button>
-        <button onClick={handleChoice} className="col-span-2 m-auto z-10 rounded-full p-4 shadow-inner bg-gradient-to-tr from-rock-from to-rock-to"><div className="bg-white w-28 h-28 rounded-full grid"><img className="m-auto" alt="rock" src={rock_icon} /></div></button>
+        <Button className="col-span-1 from-paper-from to-paper-to" handleChoice={handleChoice} value={0} icon={paper_icon} pickedButton={false} />
+        <Button className="col-span-1 from-scissors-from to-scissors-to" handleChoice={handleChoice} value={1} icon={scissors_icon} pickedButton={false} />
+        <Button className="col-span-2 from-rock-from to-rock-to" handleChoice={handleChoice} value={2} icon={rock_icon} pickedButton={false} />
       </section>
       <section className={handleRules()}>
         <h1 className="text-dark-text text-4xl font-bold row-span-1 m-auto"> RULES </h1>
