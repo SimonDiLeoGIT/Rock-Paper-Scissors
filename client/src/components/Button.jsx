@@ -8,7 +8,7 @@ export const Button = (props) => {
 
   return (
     <button
-      onClick={() => { props.handleChoice(props.value) }}
+      onClick={() => { props.handleChoice(props.value); props.setPicked(props.value) }}
       className={handleClasses()}
     >
       <div className="bg-white w-28 h-28 rounded-full grid">
