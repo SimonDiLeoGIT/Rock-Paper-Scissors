@@ -1,0 +1,40 @@
+.pc-animation {
+  animation: move-button 800ms 0ms;
+}
+
+@keyframes move-button {
+  0% {
+    transform: translate(200px, 0);
+    /* Posición inicial */
+  }
+
+  100% {
+    transform: translate(0, 0);
+    /* Posición final */
+  }
+}
+
+.result {
+  animation: result-view 200ms 800ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes result-view {
+  0% {
+    transform: translate(0, -200px) rotate(20deg);
+    transform-origin: bottom;
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(0, -50px) rotate(20deg);
+    ;
+  }
+
+  100% {
+    transform: rotate(0deg);
+    transform-origin: bottom;
+    opacity: 1;
+  }
+}

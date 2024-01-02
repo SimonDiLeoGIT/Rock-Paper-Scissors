@@ -9,6 +9,8 @@ export const GameSection = (props) => {
 
   let [picked, setPicked] = useState(-1);
   let [pc, setPc] = useState(-1);
+  let [win, setWin] = useState(false);
+  let [tie, setTie] = useState(false);
 
   function handleChoice(key) {
 
@@ -17,21 +19,24 @@ export const GameSection = (props) => {
     let pcPick = Math.floor(Math.random() * 3);
     setPc(pcPick);
 
+    let tie = false;
     let win = false;
-    let empate = false;
 
     if (user === 0) {
-      pcPick === 0 && (empate = true);
+      pcPick === 0 && (tie = true);
       pcPick === 2 && (win = true);
     } else if (user === 1) {
-      pcPick === 1 && (empate = true);
+      pcPick === 1 && (tie = true);
       pcPick === 0 && (win = true);
     } else {
-      pcPick === 2 && (empate = true);
+      pcPick === 2 && (tie = true);
       pcPick === 1 && (win = true);
     }
 
-    if (!empate) {
+    setTie(tie);
+    setWin(win);
+
+    if (!tie) {
       if (!win) {
         (props.score > 0) && props.setScore(props.score - 1)
       } else {
@@ -41,13 +46,14 @@ export const GameSection = (props) => {
 
   }
 
-  function handleClasses(choice) {
+  function handleClasses(choice, pc) {
     let classes = "from-paper-from to-paper-to"
     if (choice === 1) {
       classes = "from-scissors-from to-scissors-to";
     } else if (choice === 2) {
       classes = "from-rock-from to-rock-to";
     }
+    pc && (classes += " pc-animation")
     return classes
   }
 
@@ -55,12 +61,23 @@ export const GameSection = (props) => {
   function handleView() {
     if (picked > -1) {
       return (
-        <section>
-          <Button className={handleClasses(picked)} icon={picked === 0 ? paper_icon : (picked === 1 ? scissors_icon : rock_icon)} />
-          <p> YOU PICKED </p>
-          <Button className={handleClasses(pc)} icon={pc === 0 ? paper_icon : (pc === 1 ? scissors_icon : rock_icon)} />
-          <p> THE HOUSE PICKED </p>
-          <button onClick={() => setPicked(-1)}> CONTINUE </button>
+        <section className="grid z-10 absolute w-screen top-1/3 h-1/2">
+          <section className="grid grid-cols-2">
+            <article className="">
+              <Button className={handleClasses(picked, false)} icon={picked === 0 ? paper_icon : (picked === 1 ? scissors_icon : rock_icon)} />
+              <p> YOU PICKED </p>
+            </article>
+            <article className="">
+              <div className="bg-radial-gradient-to h-fit w-fit m-auto rounded-full">
+                <Button className={handleClasses(pc, true)} icon={pc === 0 ? paper_icon : (pc === 1 ? scissors_icon : rock_icon)} />
+              </div>
+              <p> THE HOUSE PICKED </p>
+            </article>
+          </section>
+          <section className="absolute bottom-0 w-screen result">
+            <h1 className="text-6xl font-bold"> {(!tie && !win) ? "YOU LOSE" : (win ? "YOU WIN" : "YOU TIE")} </h1>
+            <button className="text-dark-text bg-white font-medium w-48 py-2 rounded-lg mt-4" onClick={() => setPicked(-1)}> PLAY AGAIN </button>
+          </section>
         </section>
       )
     } else {
