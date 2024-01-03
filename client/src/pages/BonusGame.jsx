@@ -1,38 +1,29 @@
-import paper_icon from "./../assets/images/icon-paper.svg"
-import scissors_icon from "./../assets/images/icon-scissors.svg"
-import rock_icon from "./../assets/images/icon-rock.svg"
-import lizard_icon from "./../assets/images/icon-lizard.svg"
-import spock_icon from "./../assets/images/icon-spock.svg"
 import logo from "./../assets/images/logo-bonus.svg"
 import rules from "./../assets/images/image-rules-bonus.svg"
 import { useState } from "react"
+import { Header } from "../components/Header"
+import close from "./../assets/images/icon-close.svg"
+import { RulesSection } from "../components/RulesSection"
+import { Footer } from "../components/Footer"
+import { BonusGameSection } from "../components/BonusGameSection"
 
 export const BonusGame = () => {
 
   let [score, setScore] = useState(0);
+  let [viewRules, setRules] = useState(false);
+
+  function handleRules() {
+    let classes = "absolute bg-white top-0 z-20 w-screen h-screen grid grid-rows-4 place-content-center ";
+    !viewRules && (classes += " invisible ");
+    return classes;
+  }
 
   return (
-    <section>
-      <section className="score-container">
-        <div>
-          <img alt="logo" src={logo} />
-        </div>
-        <div>
-          <span> SCORE </span>
-          <h2> {score} </h2>
-        </div>
-      </section>
-      <section>
-        <img alt="paper" src={paper_icon} />
-        <img alt="scissor" src={scissors_icon} />
-        <img alt="rock" src={rock_icon} />
-        <img alt="spock" src={spock_icon} />
-        <img alt="lizard" src={lizard_icon} />
-      </section>
-      <div>
-        <img alt="rules" src={rules} />
-      </div>
-      <button> RULES </button>
+    <section className="fixed top-0 left-0 h-screen w-screen bg-gradient-to-b from-radial-gradient-from to-radial-gradient-to">
+      <Header logo={logo} score={score} />
+      <BonusGameSection score={score} setScore={setScore} />
+      <RulesSection handleRules={handleRules} close={close} setRules={setRules} rules={rules} />
+      <Footer setRules={setRules} />
     </section>
   );
 }
