@@ -29,6 +29,7 @@ module.exports = {
       /*  Background  */
       'radial-gradient-from': 'hsl(214, 47%, 23%)',
       'radial-gradient-to': 'hsl(237, 49%, 15%)',
+      'black': 'rgb(0, 0, 0)',
     }
   },
   plugins: [],

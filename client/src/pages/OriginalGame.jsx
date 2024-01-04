@@ -14,7 +14,7 @@ export const OriginalGame = () => {
   let [viewRules, setRules] = useState(false);
 
   function handleRules() {
-    let classes = "absolute bg-white top-0 z-20 w-screen h-screen grid grid-rows-4 place-content-center ";
+    let classes = "absolute bg-white top-0 z-20 w-screen h-screen md:grid md:place-content-center md:bg-black md:bg-opacity-40";
     !viewRules && (classes += " invisible ");
     return classes;
   }
