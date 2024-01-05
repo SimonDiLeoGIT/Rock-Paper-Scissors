@@ -5,12 +5,17 @@ export const Button = (props) => {
     return classes;
   }
 
+  function handleInnerClasses() {
+    let classes = " bg-white w-28 h-28 rounded-full grid md:w-36 md:h-36 " + props.innerClasses;
+    return classes;
+  }
+
   return (
     <button
       onClick={() => { props.handleChoice(props.value); props.setPicked(props.value) }}
       className={handleClasses()}
     >
-      <div className="bg-white w-28 h-28 rounded-full grid md:w-36 md:h-36">
+      <div className={handleInnerClasses()}>
         <img className="m-auto md:w-20" alt="paper" src={props.icon} />
       </div>
     </button>

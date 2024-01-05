@@ -3,7 +3,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'lg': '1200px', // Punto de quiebre personalizado a 800px
+      },
+    },
     fontFamily: {
       sans: ['Barlow Semi Condensed', 'sans-serif'],
     },

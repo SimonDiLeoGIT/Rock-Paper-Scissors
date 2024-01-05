@@ -22,7 +22,7 @@ export const OriginalGame = () => {
 
   return (
     <section className="fixed top-0 left-0 h-screen w-screen bg-gradient-to-b from-radial-gradient-from to-radial-gradient-to">
-      <Header logo={logo} score={score} />
+      <Header logo={logo} score={score} logoClasses="w-24 md:w-40" />
       <GameSection score={score} setScore={setScore} />
       <RulesSection handleRules={handleRules} close={close} setRules={setRules} rules={rules} />
       <Footer setRules={setRules} />

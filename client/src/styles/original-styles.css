@@ -1,10 +1,51 @@
+.choice-paper {
+  box-shadow: -2px 12px 0px -2px hsl(230, 89%, 56%);
+}
+
+.inner-shadow-paper {
+  box-shadow: inset -2.5px 20px 0px -12px hsl(230, 75%, 80%);
+}
+
+.choice-scissors {
+  box-shadow: -2px 12px 0px -2px hsl(40, 92%, 36%);
+}
+
+.inner-shadow-scissors {
+  box-shadow: inset -2.5px 20px 0px -12px hsl(41, 28%, 74%);
+}
+
+.choice-rock {
+  box-shadow: -2px 12px 0px -2px hsl(349, 81%, 39%);
+}
+
+.inner-shadow-rock {
+  box-shadow: inset -2.5px 20px 0px -12px hsl(357, 16%, 73%);
+}
+
+.choice-pock {
+  box-shadow: -2px 12px 0px -2px hsl(189, 82%, 37%);
+}
+
+.inner-shadow-pock {
+  box-shadow: inset -2.5px 20px 0px -12px hsl(188, 32%, 72%);
+}
+
+.choice-lizard {
+  box-shadow: -2px 12px 0px -2px hsl(261, 71%, 52%);
+}
+
+.inner-shadow-lizard {
+  box-shadow: inset -2.5px 20px 0px -12px hsl(261, 22%, 69%);
+}
+
+
 .pc-animation {
   animation: move-button 800ms 0ms;
 }
 
 @keyframes move-button {
   0% {
-    transform: translate(200px, 0);
+    transform: translate(800px, 0);
     /* Posición inicial */
   }
 
@@ -36,5 +77,46 @@
     transform: rotate(0deg);
     transform-origin: bottom;
     opacity: 1;
+  }
+}
+
+.move-choice-left {
+  animation: move-choice-left-animation 600ms 800ms;
+  animation-fill-mode: forwards;
+}
+
+.move-choice-right {
+  animation: move-choice-right-animation 600ms 800ms;
+  animation-fill-mode: forwards;
+}
+
+@media (min-width: 1200px) {
+
+  .result {
+    animation-delay: 1200ms;
+  }
+
+  @keyframes move-choice-left-animation {
+    0% {
+      transform: translate(0, 0);
+      /* Posición inicial */
+    }
+
+    100% {
+      transform: translate(-200px, 0);
+      /* Posición final */
+    }
+  }
+
+  @keyframes move-choice-right-animation {
+    0% {
+      transform: translate(0, 0);
+      /* Posición inicial */
+    }
+
+    100% {
+      transform: translate(200px, 0);
+      /* Posición final */
+    }
   }
 }
