@@ -1,3 +1,39 @@
+@keyframes view-first-shadow {
+  to {
+    box-shadow: 0px 0px 0px 80px rgba(255, 255, 255, 0.040);
+  }
+}
+
+@keyframes view-second-shadow {
+  to {
+    box-shadow: 0px 0px 0px 160px rgba(255, 255, 255, 0.040);
+  }
+}
+
+@keyframes view-third-shadow {
+  to {
+    box-shadow: 0px 0px 0px 240px rgba(255, 255, 255, 0.040);
+  }
+}
+
+.first-illumination {
+  box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.040);
+  animation: view-first-shadow 1s forwards;
+  animation-delay: 800ms;
+}
+
+.second-illumination {
+  box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.040);
+  animation: view-second-shadow 1.5s forwards;
+  animation-delay: 800ms;
+}
+
+.third-illumination {
+  box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.040);
+  animation: view-third-shadow 2s forwards;
+  animation-delay: 800ms;
+}
+
 .choice-paper {
   box-shadow: -2px 12px 0px -2px hsl(230, 89%, 56%);
 }

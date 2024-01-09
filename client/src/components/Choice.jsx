@@ -1,7 +1,7 @@
 export const Choice = (props) => {
 
   function handleClasses() {
-    let classes = " rounded-full p-4 w-fit m-auto bg-gradient-to-tr md:p-8  " + props.className;
+    let classes = " rounded-full p-4 w-fit m-auto bg-gradient-to-tr md:p-8 " + props.className;
     return classes;
   }
 

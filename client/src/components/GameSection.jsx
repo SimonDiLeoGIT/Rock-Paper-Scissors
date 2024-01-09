@@ -88,7 +88,7 @@ export const GameSection = (props) => {
             </article>
           </section>
           <section className="absolute bottom-0 w-screen result lg:top-1/3">
-            <h1 className="text-6xl font-bold"> {(!tie && !win) ? "YOU LOSE" : (win ? "YOU WIN" : "YOU TIE")} </h1>
+            <h1 className="text-6xl font-bold"> {(!tie && !win) ? "YOU LOSE" : (win ? "YOU WIN" : "YOU TIED")} </h1>
             <button className="text-dark-text bg-white font-medium w-48 py-2 rounded-lg mt-4" onClick={() => setPicked(-1)}> PLAY AGAIN </button>
           </section>
         </section>

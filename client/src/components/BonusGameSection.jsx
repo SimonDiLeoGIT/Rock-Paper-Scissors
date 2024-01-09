@@ -92,29 +92,69 @@ export const BonusGameSection = (props) => {
     return classes
   }
 
+  function handleChoiceClasses(id) {
+    let classes = "rounded-full "
+    if (win) {
+      if (id === 1) {
+        classes += " first-illumination"
+      } else if (id === 2) {
+        classes += " second-illumination"
+      } else {
+        classes += " third-illumination"
+      }
+    }
+    return classes
+  }
+
+  function handlePcChoiceClasses(id) {
+    let classes = "rounded-full "
+    if (!win && !tie) {
+      if (id === 1) {
+        classes += " first-illumination"
+      } else if (id === 2) {
+        classes += " second-illumination"
+      } else {
+        classes += " third-illumination"
+      }
+    }
+    return classes
+  }
+
   function handleView() {
     if (picked > -1) {
       return (
-        <section className="grid z-10 absolute w-screen top-1/3 h-1/2">
+        <section className="grid z-10 absolute w-screen top-1/4 h-1/2">
           <section className="grid grid-cols-2">
             <article className="md:m-auto md:mr-8 move-choice-left">
               <p className="invisible md:visible md:pb-12 font-semibold"> YOU PICKED </p>
-              <Choice className={handleClasses(picked, false)} innerClasses={handleInnerClasses(picked)} icon={picked === 0 ? scissors_icon : (picked === 1 ? spock_icon : (picked === 2 ? paper_icon : (picked === 3 ? lizard_icon : rock_icon)))} />
+              <div className={handleChoiceClasses(3)}>
+                <div className={handleChoiceClasses(2)}>
+                  <div className={handleChoiceClasses(1)}>
+                    <Choice className={handleClasses(picked, false)} innerClasses={handleInnerClasses(picked)} icon={picked === 0 ? scissors_icon : (picked === 1 ? spock_icon : (picked === 2 ? paper_icon : (picked === 3 ? lizard_icon : rock_icon)))} />
+                  </div>
+                </div>
+              </div>
               <p className="md:invisible"> YOU PICKED </p>
             </article>
             <article className="md:m-auto md:ml-8 move-choice-right">
               <p className="invisible md:visible md:pb-12 font-semibold"> THE HOUSE PICKED </p>
-              <div className="bg-radial-gradient-to h-fit w-fit m-auto rounded-full">
-                <Choice className={handleClasses(pc, true)} innerClasses={handleInnerClasses(pc)}
-                  icon={
-                    pc === 0 ? scissors_icon : (pc === 1 ? spock_icon : (pc === 2 ? paper_icon : (pc === 3 ? lizard_icon : rock_icon)))
-                  } />
+              <div className={handlePcChoiceClasses(3)}>
+                <div className={handlePcChoiceClasses(2)}>
+                  <div className={handlePcChoiceClasses(1)}>
+                    <div className="bg-radial-gradient-to h-fit w-fit m-auto rounded-full">
+                      <Choice className={handleClasses(pc, true)} innerClasses={handleInnerClasses(pc)}
+                        icon={
+                          pc === 0 ? scissors_icon : (pc === 1 ? spock_icon : (pc === 2 ? paper_icon : (pc === 3 ? lizard_icon : rock_icon)))
+                        } />
+                    </div>
+                  </div>
+                </div>
               </div>
               <p className="md:invisible"> THE HOUSE PICKED </p>
             </article>
           </section>
           <section className="absolute bottom-0 w-screen result lg:top-1/3">
-            <h1 className="text-6xl font-bold"> {(!tie && !win) ? "YOU LOSE" : (win ? "YOU WIN" : "YOU TIE")} </h1>
+            <h1 className="text-6xl font-bold"> {(!tie && !win) ? "YOU LOSE" : (win ? "YOU WIN" : "YOU TIED")} </h1>
             <button className="text-dark-text bg-white font-medium w-48 py-2 rounded-lg mt-4" onClick={() => setPicked(-1)}> PLAY AGAIN </button>
           </section>
         </section>
